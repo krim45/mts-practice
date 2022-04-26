@@ -5,13 +5,20 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    account: true,
+    kakaoAccount: false,
+    otherAccount: false,
     modalCase01: false,
     modalCase02: false,
   },
   mutations: {
+    setKakaoAccount(state, payload) {
+      state.kakaoAccount = payload.data;
+    },
+    setOtherAccount(state, payload) {
+      state.otherAccount = payload.data;
+    },
     setModalCase(state, payload) {
-      state[`modalCase${payload.number}`] = payload.data;
+      state[`modalCase${payload.type}`] = payload.data;
     },
   },
   actions: {},
