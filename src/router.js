@@ -1,7 +1,13 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from './views/Home.vue';
-import Introduction from './views/Introduction.vue';
+import Home from '@/views/Home.vue';
+import Intro from '@/views/Intro.vue';
+import Terms from '@/views/terms/Terms.vue';
+import AccountSelection from '@/views/terms/AccountSelection.vue';
+import ServiceTerms from '@/views/terms/ServiceTerms.vue';
+import CddEdd from '@/views/terms/CddEdd.vue';
+import Research from '@/views/terms/Research.vue';
+import NotFound from '@/views/NotFound.vue';
 
 Vue.use(Router);
 
@@ -15,18 +21,41 @@ export default new Router({
       component: Home,
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () =>
-        import(/* webpackChunkName: "about" */ './views/About.vue'),
+      path: '/intro',
+      name: 'intro',
+      component: Intro,
     },
     {
-      path: '/introduction',
-      name: 'introduction',
-      component: Introduction,
+      path: '/terms',
+      name: 'terms',
+      component: Terms,
+      children: [
+        {
+          path: 'account-selection',
+          name: 'account-selection',
+          component: AccountSelection,
+        },
+        {
+          path: 'service-terms',
+          name: 'service-terms',
+          component: ServiceTerms,
+        },
+        {
+          path: 'cdd-edd',
+          name: 'cdd-edd',
+          component: CddEdd,
+        },
+        {
+          path: 'research',
+          name: 'research',
+          component: Research,
+        },
+      ],
+    },
+    {
+      path: '/:catchAll(.*)',
+      name: 'NotFound',
+      component: NotFound,
     },
   ],
 });

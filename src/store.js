@@ -5,6 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    login: false,
     kakaoAccount: false,
     otherAccount: false,
     modalCase01: false,

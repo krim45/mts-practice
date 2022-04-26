@@ -4,7 +4,7 @@
       <h2>홈</h2>
       <Navigations :menus="menus" />
       <section>
-        <ItemList :option="itemOption" />
+        <List :option="listOption" />
       </section>
     </TheContainer>
     <ModalYesOrNo :option="modalOption" />
@@ -12,14 +12,14 @@
 </template>
 
 <script>
-import ItemList from "../components/ItemList.vue";
+import TheContainer from "../layouts/TheContainer.vue";
+import List from "../components/List.vue";
 import ModalYesOrNo from "../components/ModalYesOrNo.vue";
 import Navigations from "../components/Navigations.vue";
-import TheContainer from "../layouts/TheContainer.vue";
 
 export default {
   name: "home",
-  components: { Navigations, TheContainer, ItemList, ModalYesOrNo },
+  components: { Navigations, TheContainer, List, ModalYesOrNo },
   data() {
     return {
       menus: [
@@ -29,7 +29,7 @@ export default {
         },
         {
           content: "서비스 신청",
-          path: "/application",
+          path: "/terms",
           validation: true,
         },
       ],
@@ -38,7 +38,7 @@ export default {
         title: "서비스 둘러보기",
         content: "닫기",
       },
-      itemOption: {
+      listOption: {
         title: "수익률 BEST 10",
         standard: true,
         list: [
@@ -65,7 +65,7 @@ export default {
       modalOption: {
         content: "카카오뱅크 계좌가 필요한 메뉴입니다.",
         type: "01",
-        path: "/application",
+        path: "/terms",
         textOfYes: "계좌 만들기",
       },
     };

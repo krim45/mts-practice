@@ -1,5 +1,9 @@
 <template>
-  <div v-if="this.$store.state[`modalCase${option.type}`]" class="container">
+  <div
+    v-if="this.$store.state[`modalCase${option.type}`]"
+    class="container"
+    @click.self="closeModal"
+  >
     <div class="modal-container">
       <div class="content-container">
         <p>
@@ -39,7 +43,7 @@ export default {
 <style scoped>
 .container {
   background: rgba(0, 0, 0, 0.7);
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
