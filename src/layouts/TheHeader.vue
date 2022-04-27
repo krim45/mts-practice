@@ -1,10 +1,10 @@
 <template>
   <header>
-    <button class="go-back-btn" v-show="option.icon" @click="$router.go(-1)">
+    <button class="go-back-btn" v-if="option.icon" @click="$router.go(-1)">
       <img src="@/assets/icon-back.svg" alt="go-back-icon" />
     </button>
     <h2 class="title">{{ option.title }}</h2>
-    <button class="close-btn" v-show="option.content" @click="$router.go(-1)">
+    <button class="close-btn" v-if="option.content" @click="$router.go(-1)">
       {{ option.content }}
     </button>
   </header>
@@ -25,6 +25,7 @@ export default {
 header {
   display: flex;
   width: 100%;
+  height: 70px;
   justify-content: center;
   position: fixed;
   top: 0;

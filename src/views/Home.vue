@@ -72,9 +72,7 @@ export default {
         type: "01",
         content: "카카오뱅크 계좌가 필요한 메뉴입니다.",
         textOfYes: "계좌 만들기",
-        click: () => {
-          this.$router.push("/terms");
-        },
+        click: () => this.$router.push("/terms"),
       },
     };
   },

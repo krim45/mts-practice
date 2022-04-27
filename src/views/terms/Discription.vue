@@ -2,9 +2,9 @@
   <TheContainer :option="headerOption">
     <div>
       <ul>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>개인정보 동의서1</li>
+        <li>개인정보 동의서2</li>
+        <li>개인정보 동의서3</li>
       </ul>
     </div>
     <FixedButton @click.native="$router.replace(path)">확인</FixedButton>
