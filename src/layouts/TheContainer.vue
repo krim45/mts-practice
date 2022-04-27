@@ -23,6 +23,6 @@ export default {
 
 <style scoped>
 main {
-  margin-top: 100px;
+  margin-top: 69px;
 }
 </style>

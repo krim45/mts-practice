@@ -3,6 +3,8 @@ import Router from 'vue-router';
 import Home from '@/views/Home.vue';
 import Intro from '@/views/Intro.vue';
 import Terms from '@/views/terms/Terms.vue';
+import StockTerms from '@/views/terms/StockTerms.vue';
+import Discription from '@/views/terms/Discription.vue';
 import AccountSelection from '@/views/terms/AccountSelection.vue';
 import ServiceTerms from '@/views/terms/ServiceTerms.vue';
 import CddEdd from '@/views/terms/CddEdd.vue';
@@ -28,8 +30,20 @@ export default new Router({
     {
       path: '/terms',
       name: 'terms',
+      redirect: '/terms/stock-terms',
       component: Terms,
+      props: true,
       children: [
+        {
+          path: 'stock-terms',
+          name: 'stock-terms',
+          component: StockTerms,
+        },
+        {
+          path: 'discription',
+          name: 'discription',
+          component: Discription,
+        },
         {
           path: 'account-selection',
           name: 'account-selection',

@@ -4,7 +4,7 @@
       class="menu"
       v-for="(menu, idx) in menus"
       :key="idx"
-      @click="() => validatePath(menu.validation, idx)"
+      @click="menu.click"
     >
       {{ menu.content }}
     </li>
@@ -19,19 +19,7 @@ export default {
       required: true,
     },
   },
-  methods: {
-    validatePath(validation, idx) {
-      // 계좌 보유 했으면 이동
-      if (!validation || this.$store.state.kakaoAccount) {
-        return this.$router.push(this.menus[idx].path);
-      }
-      // 없으면 모달
-      this.$store.commit("setModalCase", {
-        type: "01",
-        data: true,
-      });
-    },
-  },
+  methods: {},
 };
 </script>
 

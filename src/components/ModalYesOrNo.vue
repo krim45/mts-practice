@@ -12,7 +12,9 @@
       </div>
       <div class="btn-container">
         <button class="btn-no" @click="closeModal">취소</button>
-        <button class="btn-yes" @click="goNext">{{ option.textOfYes }}</button>
+        <button class="btn-yes" @click="option.click">
+          {{ option.textOfYes }}
+        </button>
       </div>
     </div>
   </div>
@@ -32,9 +34,6 @@ export default {
         type: this.option.type,
         data: false,
       });
-    },
-    goNext() {
-      this.$router.push(this.option.path);
     },
   },
 };

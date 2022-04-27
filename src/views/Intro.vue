@@ -6,7 +6,9 @@
     <div>
       <p>국내주식 거래 시작하기</p>
     </div>
-    <FixedButton :path="path">국내주식 둘러보기</FixedButton>
+    <FixedButton @click.native="$router.push('/')">
+      국내주식 둘러보기
+    </FixedButton>
   </div>
 </template>
 
@@ -17,12 +19,8 @@ export default {
   components: {
     FixedButton,
   },
-  data() {
-    return {
-      path: "/",
-    };
-  },
 };
 </script>
 
-<style></style>
+<style scoped>
+</style>

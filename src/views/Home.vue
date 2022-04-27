@@ -1,14 +1,12 @@
 <template>
-  <div>
-    <TheContainer :option="headerOption">
-      <h2>홈</h2>
-      <Navigations :menus="menus" />
-      <section>
-        <List :option="listOption" />
-      </section>
-    </TheContainer>
+  <TheContainer :option="headerOption">
+    <h2>홈</h2>
+    <Navigations :menus="menus" />
+    <section>
+      <List :option="listOption" />
+    </section>
     <ModalYesOrNo :option="modalOption" />
-  </div>
+  </TheContainer>
 </template>
 
 <script>
@@ -25,16 +23,24 @@ export default {
       menus: [
         {
           content: "주식 검색",
-          path: "/search",
+          click: () => this.$router.push("/search"),
         },
         {
           content: "서비스 신청",
-          path: "/terms",
-          validation: true,
+          click: () => {
+            // 계좌 보유 했으면 이동
+            if (this.$store.state.kakaoAccount) {
+              return this.$router.push("/terms");
+            }
+            // 없으면 모달
+            this.$store.commit("setModalCase", {
+              type: "01",
+              data: true,
+            });
+          },
         },
       ],
       headerOption: {
-        icon: true,
         title: "서비스 둘러보기",
         content: "닫기",
       },
@@ -63,10 +69,12 @@ export default {
         ],
       },
       modalOption: {
-        content: "카카오뱅크 계좌가 필요한 메뉴입니다.",
         type: "01",
-        path: "/terms",
+        content: "카카오뱅크 계좌가 필요한 메뉴입니다.",
         textOfYes: "계좌 만들기",
+        click: () => {
+          this.$router.push("/terms");
+        },
       },
     };
   },

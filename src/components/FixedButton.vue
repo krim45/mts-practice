@@ -1,21 +1,18 @@
 <template>
   <div class="btn-container">
     <div>
-      <button @click="$router.push(path)">
+      <Button :css="css">
         <slot />
-      </button>
+      </Button>
     </div>
   </div>
 </template>
 
 <script>
+import Button from "./Button.vue";
 export default {
-  props: {
-    path: {
-      type: String,
-      required: true,
-    },
-  },
+  components: { Button },
+  props: ["css"],
 };
 </script>
 
@@ -29,13 +26,5 @@ export default {
 
 .btn-container > div {
   padding: 0 20px 18px;
-}
-
-button {
-  width: 100%;
-  font-size: 17px;
-  height: 56px;
-  border: 0 solid transparent;
-  border-radius: 16px;
 }
 </style>
