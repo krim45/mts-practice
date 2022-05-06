@@ -18,7 +18,7 @@ export default {
 }
 
 * {
-  box-sizing: border-box;
+  box-sizing: content-box;
   margin: 0;
   padding: 0;
 }

@@ -1,6 +1,6 @@
 <template>
   <TheContainer :option="headerOption">
-    <h2>홈</h2>
+    <Swiper></Swiper>
     <Navigations :menus="menus" />
     <section>
       <List :option="listOption" />
@@ -14,10 +14,11 @@ import TheContainer from "../layouts/TheContainer.vue";
 import List from "../components/List.vue";
 import ModalYesOrNo from "../components/ModalYesOrNo.vue";
 import Navigations from "../components/Navigations.vue";
+import Swiper from "../components/Swiper.vue";
 
 export default {
   name: "home",
-  components: { Navigations, TheContainer, List, ModalYesOrNo },
+  components: { Navigations, TheContainer, List, ModalYesOrNo, Swiper },
   data() {
     return {
       menus: this.$store.state.login
@@ -94,8 +95,4 @@ export default {
 </script>
 
 <style scoped>
-h2 {
-  text-align: center;
-  margin: 50px 0;
-}
 </style>

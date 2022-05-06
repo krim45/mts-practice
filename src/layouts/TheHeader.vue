@@ -27,10 +27,10 @@ header {
   width: 100%;
   height: 70px;
   justify-content: center;
+  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
-  padding: 20px 0;
   background: gray;
 }
 
