@@ -20,26 +20,40 @@ export default {
   components: { Navigations, TheContainer, List, ModalYesOrNo },
   data() {
     return {
-      menus: [
-        {
-          content: "주식 검색",
-          click: () => this.$router.push("/search"),
-        },
-        {
-          content: "서비스 신청",
-          click: () => {
-            // 계좌 보유 했으면 이동
-            if (this.$store.state.kakaoAccount) {
-              return this.$router.push("/terms");
-            }
-            // 없으면 모달
-            this.$store.commit("setModalCase", {
-              type: "01",
-              data: true,
-            });
-          },
-        },
-      ],
+      menus: this.$store.state.login
+        ? [
+            {
+              content: "주식 검색",
+              click: () => this.$router.push("/search"),
+            },
+            {
+              content: "주문내역",
+              click: () => this.$router.push("/search"),
+            },
+            {
+              content: "이체내역",
+              click: () => this.$router.push("/search"),
+            },
+          ]
+        : [
+            {
+              content: "주식 검색",
+              click: () => this.$router.push("/search"),
+            },
+            {
+              content: "서비스 신청",
+              click: () => {
+                // 계좌 보유 했으면 이동
+                if (this.$store.state.kakaoAccount) {
+                  return this.$router.push("/terms");
+                }
+                // 없으면 모달
+                this.$store.commit("setModalCase", {
+                  data: true,
+                });
+              },
+            },
+          ],
       headerOption: {
         title: "서비스 둘러보기",
         content: "닫기",

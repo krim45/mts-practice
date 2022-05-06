@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="this.$store.state[`modalCase${option.type}`]"
+    v-if="this.$store.state.modalCase"
     class="container"
     @click.self="closeModal"
   >
@@ -31,7 +31,6 @@ export default {
   methods: {
     closeModal() {
       this.$store.commit("setModalCase", {
-        type: this.option.type,
         data: false,
       });
     },
