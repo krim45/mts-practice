@@ -4,7 +4,7 @@
       <div>
         <p>
           <label>
-            <input type="checkbox" @change="checkAll" />
+            <input type="checkbox" @change="checkAll" :checked="allChecked" />
             <span>모두 동의합니다.</span>
           </label>
         </p>
@@ -27,7 +27,7 @@
           </span>
         </li>
       </ul>
-      <FixedButton>다음</FixedButton>
+      <FixedButton v-if="isRequired">다음</FixedButton>
     </form>
   </TheContainer>
 </template>
@@ -72,6 +72,17 @@ export default {
       ],
     };
   },
+  computed: {
+    isRequired() {
+      let required = true;
+      this.termsList.forEach((list) => {
+        if (list.required && !list.checked) {
+          required = false;
+        }
+      });
+      return required;
+    },
+  },
   methods: {
     checkAll() {
       this.allChecked = !this.allChecked;
@@ -80,10 +91,23 @@ export default {
       });
     },
     checkTerms(idx) {
-      this.termsList[idx].checked = !this.termsList[idx].checked;
+      this.termsList = this.termsList.map((list, index) => {
+        if (idx === index) {
+          return {
+            ...list,
+            checked: !list.checked,
+          };
+        }
+        return list;
+      });
     },
     onSubmit() {
       // this.$router.push("cdd-edd");
+    },
+  },
+  watch: {
+    termsList() {
+      this.allChecked = this.termsList.every((list) => list.checked === true);
     },
   },
 };

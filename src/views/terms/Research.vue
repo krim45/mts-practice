@@ -3,14 +3,14 @@
     <form @submit.prevent="onSubmit">
       <ul>
         <li v-for="(item, idx) in list" :key="idx">
-          <label>
+          <label @click="() => selectData(idx)">
             <input type="radio" name="investment" />
             {{ item.content }}
             <span>{{ item.small }}</span>
           </label>
         </li>
       </ul>
-      <FixedButton>다음</FixedButton>
+      <FixedButton v-if="selected">다음</FixedButton>
     </form>
   </TheContainer>
 </template>
@@ -28,14 +28,17 @@ export default {
       },
       list: [
         {
+          data: false,
           content: "제공하지 않겠습니다.",
           small: "제공하지 않아도 이용이 가능합니다.",
         },
         {
+          data: true,
           content: "제공하고 권유 받겠습니다.",
           small: "적합한 투자권유를 받을 수 있습니다.",
         },
       ],
+      selected: null,
     };
   },
   methods: {
@@ -44,6 +47,9 @@ export default {
       this.$store.commit("setLogin", { data: true });
       console.log(this.$store.state.login);
       this.$router.push("/");
+    },
+    selectData(idx) {
+      this.selected = this.list[idx];
     },
   },
 };

@@ -9,13 +9,15 @@
               v-for="(value, index) in item.options"
               :key="index"
               :value="value"
+              :disabled="index === 0"
+              :selected="index === 0"
             >
               {{ value }}
             </option>
           </select>
         </li>
       </ul>
-      <FixedButton>다음</FixedButton>
+      <FixedButton v-if="isAllSelected">다음</FixedButton>
     </form>
   </TheContainer>
 </template>
@@ -58,16 +60,19 @@ export default {
   },
   computed: {
     isAllSelected() {
-      console.log(this.valueArr);
       return this.valueArr.every((v) => v !== null);
     },
   },
   methods: {
     select(e, idx) {
-      this.valueArr[idx] = e.target.value;
+      this.valueArr = this.valueArr.map((value, index) => {
+        if (index == idx) {
+          return e.target.value;
+        }
+        return value;
+      });
     },
     onSubmit(e) {
-      console.log(e);
       // this.$router.push("research");
     },
   },

@@ -8,7 +8,7 @@ export default new Vuex.Store({
     login: false,
     kakaoAccount: false,
     otherAccount: false,
-    modalCase: false,
+    modalCase: false
   },
   mutations: {
     setLogin(state, payload) {
@@ -22,7 +22,7 @@ export default new Vuex.Store({
     },
     setModalCase(state, payload) {
       state.modalCase = payload.data;
-    },
+    }
   },
-  actions: {},
+  actions: {}
 });
