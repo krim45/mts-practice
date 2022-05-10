@@ -9,6 +9,7 @@ import AccountSelection from '@/views/terms/AccountSelection.vue';
 import ServiceTerms from '@/views/terms/ServiceTerms.vue';
 import CddEdd from '@/views/terms/CddEdd.vue';
 import Research from '@/views/terms/Research.vue';
+import StockDetail from '@/views/StockDetail.vue';
 import NotFound from '@/views/NotFound.vue';
 
 Vue.use(Router);
@@ -20,12 +21,12 @@ export default new Router({
     {
       path: '/',
       name: 'home',
-      component: Home,
+      component: Home
     },
     {
       path: '/intro',
       name: 'intro',
-      component: Intro,
+      component: Intro
     },
     {
       path: '/terms',
@@ -37,39 +38,45 @@ export default new Router({
         {
           path: 'stock-terms',
           name: 'stock-terms',
-          component: StockTerms,
+          component: StockTerms
         },
         {
           path: 'discription',
           name: 'discription',
-          component: Discription,
+          component: Discription
         },
         {
           path: 'account-selection',
           name: 'account-selection',
-          component: AccountSelection,
+          component: AccountSelection
         },
         {
           path: 'service-terms',
           name: 'service-terms',
-          component: ServiceTerms,
+          component: ServiceTerms
         },
         {
           path: 'cdd-edd',
           name: 'cdd-edd',
-          component: CddEdd,
+          component: CddEdd
         },
         {
           path: 'research',
           name: 'research',
-          component: Research,
-        },
-      ],
+          component: Research
+        }
+      ]
+    },
+    {
+      path: '/stock/:id',
+      name: 'stockDetail',
+      component: StockDetail,
+      props: true
     },
     {
       path: '/:catchAll(.*)',
       name: 'NotFound',
-      component: NotFound,
-    },
-  ],
+      component: NotFound
+    }
+  ]
 });

@@ -7,7 +7,12 @@
       </div>
     </header>
     <ul>
-      <li class="list" v-for="(list, idx) in option.list" :key="idx">
+      <li
+        class="list"
+        v-for="(list, idx) in option.list"
+        :key="idx"
+        @click="$router.push(`/stock/${list.id}`)"
+      >
         <dl>
           <dt>
             <img :src="list.src" alt="logo" />
@@ -35,6 +40,7 @@ export default {
   },
   methods: {
     formatPrice(price) {
+      this.$store.dispatch("formatPrice", price);
       return price.toLocaleString("ko-KR");
       // return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     },

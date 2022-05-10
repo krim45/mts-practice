@@ -32,7 +32,7 @@ export default {
 .menu {
   border: 1px solid #000;
   background: #fff;
-  padding: 30px 50px;
+  padding: 25px 25px;
   list-style: none;
 }
 </style>
